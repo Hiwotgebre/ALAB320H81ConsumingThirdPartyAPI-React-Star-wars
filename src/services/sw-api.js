@@ -1,6 +1,8 @@
-export async function getAllStarships() {
-    const response = await fetch('https://swapi.dev/api/starships/');
-    const data = await response.json();
-    return data.results;
+export async function getAllStarships(pageUrl = 'https://swapi.dev/api/starships/') {
+    const response = await fetch(pageUrl);
+    if (!response.ok) {
+      throw new Error('Failed to fetch starships');
+    }
+    return response.json();
   }
   
